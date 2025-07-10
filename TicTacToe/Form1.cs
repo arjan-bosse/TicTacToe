@@ -18,7 +18,7 @@ namespace TicTacToe
     public partial class TicTacToe : Form
     {
         // Het lopende TicTacToe spel
-        private T3State ttt;
+        private GameState spel;
 
         // Font voor winnende buttons, maak tekst 2x zo groot en bold
         private Font winFont;
@@ -34,7 +34,7 @@ namespace TicTacToe
         private void TicTacToe_Load(object sender, EventArgs e)
         {
             // Maak spel aan
-            ttt = new T3State();
+            spel = new GameState();
 
             // Font voor buttons bij winst
             oldFont = button10.Font;
@@ -48,9 +48,9 @@ namespace TicTacToe
         //
         private void refresh()
         {
-            String[] bord = ttt.getBord();
-            String winst = ttt.getWinst();
-            String winnaar = ttt.getWinnaar();
+            String[] bord = spel.getBord();
+            String winst = spel.getWinst();
+            String winnaar = spel.getWinnaar();
 
             // Buttons fonts resetten
             button1.Font = oldFont;
@@ -107,13 +107,13 @@ namespace TicTacToe
             {
                 button10.Text = "Winnaar " + winnaar;
             }
-            else if (ttt.isGelijkspel())
+            else if (spel.isGelijkspel())
             {
                 button10.Text = "Gelijkspel";
             }
             else
             {
-                button10.Text = "Speel " + ttt.getPlayer();
+                button10.Text = "Speel " + spel.getPlayer();
             }
 
             // Buttons verversen
@@ -131,44 +131,44 @@ namespace TicTacToe
 
         // Gebruiker speelt zelf
         // 
-        private void button1_Click(object sender, EventArgs e) { button1.Text = ttt.speel(1); refresh(); }
-        private void button2_Click(object sender, EventArgs e) { button2.Text = ttt.speel(2); refresh(); }
-        private void button3_Click(object sender, EventArgs e) { button3.Text = ttt.speel(3); refresh(); }
-        private void button4_Click(object sender, EventArgs e) { button4.Text = ttt.speel(4); refresh(); }
-        private void button5_Click(object sender, EventArgs e) { button5.Text = ttt.speel(5); refresh(); }
-        private void button6_Click(object sender, EventArgs e) { button6.Text = ttt.speel(6); refresh(); }
-        private void button7_Click(object sender, EventArgs e) { button7.Text = ttt.speel(7); refresh(); }
-        private void button8_Click(object sender, EventArgs e) { button8.Text = ttt.speel(8); refresh(); }
-        private void button9_Click(object sender, EventArgs e) { button9.Text = ttt.speel(9); refresh(); }
+        private void button1_Click(object sender, EventArgs e) { button1.Text = spel.speel(1); refresh(); }
+        private void button2_Click(object sender, EventArgs e) { button2.Text = spel.speel(2); refresh(); }
+        private void button3_Click(object sender, EventArgs e) { button3.Text = spel.speel(3); refresh(); }
+        private void button4_Click(object sender, EventArgs e) { button4.Text = spel.speel(4); refresh(); }
+        private void button5_Click(object sender, EventArgs e) { button5.Text = spel.speel(5); refresh(); }
+        private void button6_Click(object sender, EventArgs e) { button6.Text = spel.speel(6); refresh(); }
+        private void button7_Click(object sender, EventArgs e) { button7.Text = spel.speel(7); refresh(); }
+        private void button8_Click(object sender, EventArgs e) { button8.Text = spel.speel(8); refresh(); }
+        private void button9_Click(object sender, EventArgs e) { button9.Text = spel.speel(9); refresh(); }
 
         // Gebruiker laat computer spelen
         //
         private void button10_Click(object sender, EventArgs e)
         {
-            int advies = ttt.advies();
-            if (advies == 1) { button1.Text = ttt.speel(1); }
-            if (advies == 2) { button2.Text = ttt.speel(2); }
-            if (advies == 3) { button3.Text = ttt.speel(3); }
-            if (advies == 4) { button4.Text = ttt.speel(4); }
-            if (advies == 5) { button5.Text = ttt.speel(5); }
-            if (advies == 6) { button6.Text = ttt.speel(6); }
-            if (advies == 7) { button7.Text = ttt.speel(7); }
-            if (advies == 8) { button8.Text = ttt.speel(8); }
-            if (advies == 9) { button9.Text = ttt.speel(9); }
+            int advies = spel.advies();
+            if (advies == 1) { button1.Text = spel.speel(1); }
+            if (advies == 2) { button2.Text = spel.speel(2); }
+            if (advies == 3) { button3.Text = spel.speel(3); }
+            if (advies == 4) { button4.Text = spel.speel(4); }
+            if (advies == 5) { button5.Text = spel.speel(5); }
+            if (advies == 6) { button6.Text = spel.speel(6); }
+            if (advies == 7) { button7.Text = spel.speel(7); }
+            if (advies == 8) { button8.Text = spel.speel(8); }
+            if (advies == 9) { button9.Text = spel.speel(9); }
             refresh();
         }
 
         // Neem zet terug
         private void button11_Click(object sender, EventArgs e)
         {
-            ttt.terug();
+            spel.terug();
             refresh();
         }
 
         // Neem alle zetten terug
         private void button12_Click(object sender, EventArgs e)
         {
-            ttt.reset();
+            spel.reset();
             refresh();
         }
     }

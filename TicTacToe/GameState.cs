@@ -13,7 +13,7 @@ namespace TicTacToe
 {
     // Het lopende TicTacToe spel
     //
-    class T3State
+    class GameState
     {
         private String[] bord;
         private String aanzet;
@@ -25,7 +25,7 @@ namespace TicTacToe
 
         // Conctructor
         //
-        public T3State()
+        public GameState()
         {
             bord = new String[9] { "", "", "", "", "", "", "", "", "" };
             aanzet = "X";
